@@ -7,8 +7,12 @@ import { User } from './users/user.entity';
 import { Profile } from './profile/entities/profile.entity';
 import { ProfileModule } from './profile/profile.module';
 import { ConfigModule } from '@nestjs/config';
+import { CoursesModule } from './courses/courses.module';
+import { ModulesModule } from './modules/modules.module';
+import { Course } from './courses/entities/course.entity';
+import { CourseModule } from './modules/entities/module.entity';
 
-const entities = [User, Profile];
+const entities = [User, Profile, Course, CourseModule];
 
 @Module({
   imports: [
@@ -25,6 +29,8 @@ const entities = [User, Profile];
     }),
     UsersModule,
     ProfileModule,
+    CoursesModule,
+    ModulesModule,
   ],
   controllers: [AppController],
   providers: [AppService],
