@@ -24,7 +24,7 @@ export class ProfileService {
 
   findOne(id: number): Promise<Profile> {
     // console.log(this.profileRepository.findOne(id));
-    return this.profileRepository.findOne(id);
+    return this.profileRepository.findOne({ userId: id });
   }
 
   update(id: number, updateProfileDto: UpdateProfileDto) {
