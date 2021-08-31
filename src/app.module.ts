@@ -11,8 +11,10 @@ import { CoursesModule } from './courses/courses.module';
 import { ModulesModule } from './modules/modules.module';
 import { Course } from './courses/entities/course.entity';
 import { CourseModule } from './modules/entities/module.entity';
+import { LessonsModule } from './lessons/lessons.module';
+import { Lesson } from './lessons/entities/lesson.entity';
 
-const entities = [User, Profile, Course, CourseModule];
+const entities = [User, Profile, Course, CourseModule, Lesson];
 
 @Module({
   imports: [
@@ -31,6 +33,7 @@ const entities = [User, Profile, Course, CourseModule];
     ProfileModule,
     CoursesModule,
     ModulesModule,
+    LessonsModule,
   ],
   controllers: [AppController],
   providers: [AppService],

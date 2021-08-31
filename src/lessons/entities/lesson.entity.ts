@@ -8,33 +8,21 @@ import {
 } from 'typeorm';
 
 @Entity()
-export class Course extends BaseEntity {
+export class Lesson extends BaseEntity {
   @PrimaryGeneratedColumn()
   id: number;
 
   @Column()
-  userId: number;
+  moduleId: number;
 
   @Column()
-  name: string;
+  type: string;
 
   @Column()
-  description: string;
+  content: string;
 
   @Column()
-  beginDate: Date;
-
-  @Column()
-  endDate: Date;
-
-  @Column()
-  banner: string;
-
-  @Column()
-  price: number;
-
-  @Column()
-  paymentType: string;
+  order: boolean;
 
   @Column()
   @CreateDateColumn()

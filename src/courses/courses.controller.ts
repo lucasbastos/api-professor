@@ -10,6 +10,7 @@ import {
 } from '@nestjs/common';
 import { Request } from 'express';
 import { CoursesService } from './courses.service';
+import { CreateCourseDto } from './dto/create-course.dto';
 // import { CreateCourseDto } from './dto/create-course.dto';
 import { UpdateCourseDto } from './dto/update-course.dto';
 
@@ -18,9 +19,8 @@ export class CoursesController {
   constructor(private readonly coursesService: CoursesService) {}
 
   @Post()
-  create(@Body() body) {
-    console.log(body);
-    return this.coursesService.create(body);
+  create(@Body() createCourseDto: CreateCourseDto) {
+    return this.coursesService.create(createCourseDto);
   }
 
   @Get()
