@@ -22,6 +22,9 @@ export class Profile extends BaseEntity {
   lastName: string;
 
   @Column()
+  title: string;
+
+  @Column()
   isActive: boolean;
 
   @Column()

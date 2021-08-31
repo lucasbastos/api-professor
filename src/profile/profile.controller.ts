@@ -25,6 +25,12 @@ export class ProfileController {
     return this.profileService.findAll();
   }
 
+  @Get('/inactive')
+  async findAllInactive() {
+    const all = await this.profileService.findAll();
+    return all.filter((profile) => profile.isActive === false);
+  }
+
   @Get(':id')
   findOne(@Param('id') id: string) {
     return this.profileService.findOne(+id);
