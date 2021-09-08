@@ -2,7 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { CreateCourseDto } from './dto/create-course.dto';
 import { UpdateCourseDto } from './dto/update-course.dto';
 import { Course } from './entities/course.entity';
-// import { Modules } from './../modules/entities/module.entity';
+import { CourseModule } from './../modules/entities/module.entity';
 
 @Injectable()
 export class CoursesService {
@@ -19,8 +19,12 @@ export class CoursesService {
     return courses;
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} course`;
+  async findOne(id: number) {
+    const courses = await Course.find({ id: id });
+    const modules = await CourseModule.find({ courseId: id });
+
+    console.log(modules);
+    return { courses: courses, modules: modules };
   }
 
   update(id: number, updateCourseDto: UpdateCourseDto) {
