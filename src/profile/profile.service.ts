@@ -28,7 +28,7 @@ export class ProfileService {
   }
 
   update(id: number, updateProfileDto: UpdateProfileDto) {
-    return this.profileRepository.update(id, updateProfileDto);
+    return this.profileRepository.update({ userId: id }, updateProfileDto);
     // return `This action updates a #${id} profile`;
   }
 
