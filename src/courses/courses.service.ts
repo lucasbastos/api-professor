@@ -3,6 +3,7 @@ import { CreateCourseDto } from './dto/create-course.dto';
 import { UpdateCourseDto } from './dto/update-course.dto';
 import { Course } from './entities/course.entity';
 import { CourseModule } from './../modules/entities/module.entity';
+import { Lesson } from 'src/lessons/entities/lesson.entity';
 
 @Injectable()
 export class CoursesService {
@@ -10,7 +11,6 @@ export class CoursesService {
     const course = Course.create(createCourseDto);
     // const modules = Modules.create(createCourseDto.modules);
     await course.save();
-    console.log(course);
     return course;
   }
 
@@ -22,9 +22,21 @@ export class CoursesService {
   async findOne(id: number) {
     const courses = await Course.find({ id: id });
     const modules = await CourseModule.find({ courseId: id });
+    const lessons = [];
 
-    console.log(modules);
-    return { courses: courses, modules: modules };
+    for (const module of modules) {
+      const lesson = await Lesson.find({ moduleId: module.id });
+      lessons.push(lesson[0]);
+    }
+    // const lessons = await Lesson.find({ moduleId: 1 });
+
+    // const lessons = await Promise.all(
+    //   modules.forEach(async (item) => {
+    //     await Lesson.find({ moduleId: item.id });
+    //   }),
+    // );
+
+    return { courses: courses, modules: modules, lessons: lessons };
   }
 
   update(id: number, updateCourseDto: UpdateCourseDto) {

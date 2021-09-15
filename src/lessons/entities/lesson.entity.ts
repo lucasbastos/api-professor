@@ -16,6 +16,9 @@ export class Lesson extends BaseEntity {
   moduleId: number;
 
   @Column()
+  name: string;
+
+  @Column()
   type: string;
 
   @Column()

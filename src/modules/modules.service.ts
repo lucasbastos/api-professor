@@ -1,11 +1,14 @@
 import { Injectable } from '@nestjs/common';
 import { CreateModuleDto } from './dto/create-module.dto';
 import { UpdateModuleDto } from './dto/update-module.dto';
+import { CourseModule } from './entities/module.entity';
 
 @Injectable()
 export class ModulesService {
-  create(createModuleDto: CreateModuleDto) {
-    return 'This action adds a new module';
+  async create(createModuleDto: CreateModuleDto) {
+    const module = CourseModule.create(createModuleDto);
+    await module.save();
+    return module;
   }
 
   findAll() {

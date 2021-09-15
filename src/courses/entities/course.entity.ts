@@ -36,6 +36,9 @@ export class Course extends BaseEntity {
   @Column()
   paymentType: string;
 
+  @Column({ default: false })
+  approved: boolean;
+
   @Column()
   @CreateDateColumn()
   createdAt: Date;
