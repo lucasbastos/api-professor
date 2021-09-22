@@ -27,7 +27,12 @@ export class CoursesController {
   findAll(@Req() request: Request) {
     const userId = request.query.id;
     const y: number = +userId;
-    return this.coursesService.findAll(y);
+    return this.coursesService.findAllByUser(y);
+  }
+
+  @Get('/all')
+  findAllCourses() {
+    return this.coursesService.findAllCourses();
   }
 
   @Get(':id')
