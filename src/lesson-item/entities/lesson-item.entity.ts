@@ -8,24 +8,18 @@ import {
 } from 'typeorm';
 
 @Entity()
-export class Lesson extends BaseEntity {
+export class LessonItem extends BaseEntity {
   @PrimaryGeneratedColumn()
   id: number;
 
   @Column()
-  moduleId: number;
-
-  @Column()
-  name: string;
+  lessonId: number;
 
   @Column()
   type: string;
 
   @Column()
   content: string;
-
-  @Column()
-  order: number;
 
   @Column()
   @CreateDateColumn()

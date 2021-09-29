@@ -8,6 +8,4 @@ export class CreateModuleDto {
   name: string;
   @ApiProperty()
   description: string;
-  @ApiProperty()
-  lessons: Array<Lesson>;
 }

@@ -1,14 +1,10 @@
 import { ApiProperty } from '@nestjs/swagger';
 
-export class CreateLessonDto {
+export class CreateLessonItemDto {
   @ApiProperty()
-  moduleId: number;
-  @ApiProperty()
-  name: string;
+  lessonId: number;
   @ApiProperty()
   type: string;
-  @ApiProperty()
-  order: number;
   @ApiProperty()
   content: string;
 }

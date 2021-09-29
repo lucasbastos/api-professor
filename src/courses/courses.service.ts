@@ -16,7 +16,6 @@ export class CoursesService {
 
   async create(createCourseDto: CreateCourseDto) {
     const course = Course.create(createCourseDto);
-    // const modules = Modules.create(createCourseDto.modules);
     await course.save();
     return course;
   }
@@ -38,15 +37,8 @@ export class CoursesService {
 
     for (const module of modules) {
       const lesson = await Lesson.find({ moduleId: module.id });
-      lessons.push(lesson[0]);
+      if (lesson.length > 0) lessons.push(lesson[0]);
     }
-    // const lessons = await Lesson.find({ moduleId: 1 });
-
-    // const lessons = await Promise.all(
-    //   modules.forEach(async (item) => {
-    //     await Lesson.find({ moduleId: item.id });
-    //   }),
-    // );
 
     return { courses: courses, modules: modules, lessons: lessons };
   }

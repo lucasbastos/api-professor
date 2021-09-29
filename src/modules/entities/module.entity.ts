@@ -18,7 +18,7 @@ export class CourseModule extends BaseEntity {
   @Column()
   name: string;
 
-  @Column()
+  @Column({ default: '' })
   description: string;
 
   @Column()
